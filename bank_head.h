@@ -10,6 +10,7 @@
 #include <poll.h>                                          
 #include <fcntl.h>                                         
 #include <signal.h>
+#include <ncurses.h>
 /**********************************************************/
 /* DEFINE */                                               
 #define BUF_SIZE 100                                       
