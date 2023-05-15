@@ -44,46 +44,46 @@ int login = 0;
 
 /********************************************************************************************************/
 /*Calculator VALUE */
-//INFIX¸¦ POSTFIX·Î Ç¥±âÇÏ¿© °è»êÇÏ´Â¹æ½ÄÀ¸·Î ±¸Çö
-//ÁßÀ§Ç¥±â¹ı(infix)->ÈÄÀ§Ç¥±â¹ı(postfix)
+//INFIXë¥¼ POSTFIXë¡œ í‘œê¸°í•˜ì—¬ ê³„ì‚°í•˜ëŠ”ë°©ì‹ìœ¼ë¡œ êµ¬í˜„
+//ì¤‘ìœ„í‘œê¸°ë²•(infix)->í›„ìœ„í‘œê¸°ë²•(postfix)
 
-//'0', '9', '+', '-', '*', '/', '(', ')' È®ÀÎÇÚµé·¯
+//'0', '9', '+', '-', '*', '/', '(', ')' í™•ì¸í•¸ë“¤ëŸ¬
 int handle;
 
-//°ıÈ£ È®ÀÎÇÏ´Â ÇÚµé·¯
+//ê´„í˜¸ í™•ì¸í•˜ëŠ” í•¸ë“¤ëŸ¬
 int guarhandle;
 
-//°öÇÏ±â³ª´©±â È®ÀÎÇÏ´Â ÇÚµé·¯
+//ê³±í•˜ê¸°ë‚˜ëˆ„ê¸° í™•ì¸í•˜ëŠ” í•¸ë“¤ëŸ¬
 int divmulhandle;
 
-// ÀÔ·Â °ªÀÇ ÃÖ´ë »çÀÌÁî ÁöÁ¤
+// ì…ë ¥ ê°’ì˜ ìµœëŒ€ ì‚¬ì´ì¦ˆ ì§€ì •
 //#define ARRAY_SIZE 200
 
-// ÀÔ·Â ¹ŞÀº ¼ö½ÄÀÌ ÀúÀåµÇ´Â ¹è¿­
+// ì…ë ¥ ë°›ì€ ìˆ˜ì‹ì´ ì €ì¥ë˜ëŠ” ë°°ì—´
 char input[ARRAY_SIZE] = {0};
 
-// ÀÔ·Â ¹ŞÀº ¼ö½ÄÀÇ ±æÀÌ¸¦ º¸°üÇÏ´Â º¯¼ö
+// ì…ë ¥ ë°›ì€ ìˆ˜ì‹ì˜ ê¸¸ì´ë¥¼ ë³´ê´€í•˜ëŠ” ë³€ìˆ˜
 int inputLength = 0;
 /********************************************************************************************************/
 
 /********************************************************************************************************/
 /*Omok VALUE */
-//¿À¸ñÆÇ
+//ì˜¤ëª©íŒ
 char board[BOARD_SIZE][BOARD_SIZE];
 
-//ÀÔÀåÇÒ Å×ÀÌºí
+//ì…ì¥í•  í…Œì´ë¸”
 char table[3];
 
-//»ç¿ëÇÒ µ¹
+//ì‚¬ìš©í•  ëŒ
 char dol;
 
-//°ÔÀÓ ½ÃÀÛÃ¼Å© 0Å×ÀÌºí ÀÔÀå 1 ½ÃÀÛ
+//ê²Œì„ ì‹œì‘ì²´í¬ 0í…Œì´ë¸” ì…ì¥ 1 ì‹œì‘
 char start =  -1;
 
-//½ÂºÎ Ã¼Å© w/l  win/loss
+//ìŠ¹ë¶€ ì²´í¬ w/l  win/loss
 char win_loss = 0;
 
-//¿ì¼±¼øÀ§ Ã¼Å© y/n  y³»Â÷·Ê n»ó´ëÂ÷·Ê
+//ìš°ì„ ìˆœìœ„ ì²´í¬ y/n  yë‚´ì°¨ë¡€ nìƒëŒ€ì°¨ë¡€
 char turn = 0;
 /********************************************************************************************************/
 
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 	if(argc!=4) 
 	{
 		printf("Usage : %s <IP> <port> <name>\n", argv[0]);
-		printf("ÀÓ½Ã°èÁ¤ACCOUNT ID : 00000000\n PW : 00000000\n", argv[0]);
+		printf("ì„ì‹œê³„ì •ACCOUNT ID : 00000000\n PW : 00000000\n", argv[0]);
 		exit(1);
 	}
         
@@ -161,7 +161,7 @@ void * send_message(void * arg)   // send thread main
             printf("input pw:");
             fgets(pw, 9 , stdin);
             while(getchar()!='\n');
-            printf("ÀÌ¸§:%s´Ô\n°èÁÂ:%s\nºñ¹ø:%s\n", name, act, pw);
+            printf("ì´ë¦„:%së‹˜\nê³„ì¢Œ:%s\në¹„ë²ˆ:%s\n", name, act, pw);
 
             memcpy(s_message->sTrCd, "LI", 2);
             memcpy(s_message->sAcct, act, 8);
@@ -185,7 +185,7 @@ void * send_message(void * arg)   // send thread main
             while(1) 
             {
                 memset(message, 0x30, BUF_SIZE);
-                printf("\nÁ¾·á:Q, Á¶È¸:J, Ã¤ÆÃ:M, ÀÔ±İ:P, Ãâ±İ:G, °è»ê±â:C, ¿À¸ñ°ÔÀÓ:5:");
+                printf("\nì¢…ë£Œ:Q, ì¡°íšŒ:J, ì±„íŒ…:M, ì…ê¸ˆ:P, ì¶œê¸ˆ:G, ê³„ì‚°ê¸°:C, ì˜¤ëª©ê²Œì„:5:");
                 check = getchar();
                 while(getchar()!='\n');
 
@@ -258,10 +258,10 @@ void * send_message(void * arg)   // send thread main
                 else if(check == '5')
 		{
 		    memcpy(message, "OM", 2);
-                    printf("Å×ÀÌºí ¼±ÅÃ[00~09]:");
+                    printf("í…Œì´ë¸” ì„ íƒ[00~09]:");
 		    fgets(table, 3, stdin);
 		    while(getchar()!='\n');
-                    printf("»ç¿ëÇÒ µ¹ ¼±ÅÃ[0~Z]:");
+                    printf("ì‚¬ìš©í•  ëŒ ì„ íƒ[0~Z]:");
 		    dol = (char)getchar();
 		    while(getchar()!='\n');
 		    memcpy(s_message->sTable, table, 2);
@@ -272,7 +272,7 @@ void * send_message(void * arg)   // send thread main
 			sleep(3);
 		        if(start == 0)
 	                {
-			    printf("\n»ó´ë ±â´Ù¸®´ÂÁß...\n");
+			    printf("\nìƒëŒ€ ê¸°ë‹¤ë¦¬ëŠ”ì¤‘...\n");
 			    continue;
 			}
 			else if(start == 1)
@@ -290,7 +290,7 @@ void * send_message(void * arg)   // send thread main
 				{
 				    for(i = 5; i > 0; i--)
 			            {
-				        mvprintw(BOARD_SIZE+1, 0, "you loss!, [%d]ÃÊµÚ °ÔÀÓÁ¾·á", i);
+				        mvprintw(BOARD_SIZE+1, 0, "you loss!, [%d]ì´ˆë’¤ ê²Œì„ì¢…ë£Œ", i);
 				        refresh();
 					sleep(1);
 				    }
@@ -299,10 +299,10 @@ void * send_message(void * arg)   // send thread main
 				}
 				if(turn == 'y')
 				{
-                                    mvprintw(BOARD_SIZE+3, 0, "»ç¿ë¹ı:¹æÇâÅ°·Î Á¶Àı, enterÅ°·Î È®Á¤");
+                                    mvprintw(BOARD_SIZE+3, 0, "ì‚¬ìš©ë²•:ë°©í–¥í‚¤ë¡œ ì¡°ì ˆ, enterí‚¤ë¡œ í™•ì •");
 				    if (get_move(dol, &row, &col))
 			            {
-                                        mvprintw(BOARD_SIZE+2, 0, "³»°¡ ³õÀº ÀÚ¸®[row:%d][col:%d]", row, col);
+                                        mvprintw(BOARD_SIZE+2, 0, "ë‚´ê°€ ë†“ì€ ìë¦¬[row:%d][col:%d]", row, col);
 				        turn = 'n';
 
 					sprintf(s_message->sRow, "%d", row);
@@ -315,7 +315,7 @@ void * send_message(void * arg)   // send thread main
 			                {
 					    for(i = 5; i > 0; i--)
 				            {
-					        mvprintw(BOARD_SIZE+1, 0, "you wins!, [%d]ÃÊµÚ °ÔÀÓÁ¾·á", i);
+					        mvprintw(BOARD_SIZE+1, 0, "you wins!, [%d]ì´ˆë’¤ ê²Œì„ì¢…ë£Œ", i);
 					        refresh();
 						sleep(1);
 					    }
@@ -365,12 +365,12 @@ void * recv_message(void * arg)   // read thread main
             else if(!memcmp(s_message->sTrCd, "ER", 2))
             {
                 check++;
-                printf("\n%dÈ¸ ¿À·ù\n", check);
+                printf("\n%díšŒ ì˜¤ë¥˜\n", check);
                 printf("\nRECV FROM BANK[SIZE:%d]:%s\n", sizeof(message), message);
                 sleep(1);
                 if(check == 5)
                 {
-                    printf("\n%dÈ¸ ¿À·ù, ÀºÇà¹æ¹®ÇÏ¼¼¿ä!!!\n", check);
+                    printf("\n%díšŒ ì˜¤ë¥˜, ì€í–‰ë°©ë¬¸í•˜ì„¸ìš”!!!\n", check);
                     close(sock);
                     exit(0);
                 }
@@ -386,7 +386,7 @@ void * recv_message(void * arg)   // read thread main
                 str_len=read(sock, message, sizeof(SEND_FMT));
                 if(str_len <= 0) 
                 {
-                    printf("\nÀºÇà¿¡ °­µµ°¡ ÃÄµé¾î¿È!!!\n");
+                    printf("\nì€í–‰ì— ê°•ë„ê°€ ì³ë“¤ì–´ì˜´!!!\n");
                     close(sock);
                     exit(0);
                 }
@@ -407,19 +407,19 @@ void * recv_message(void * arg)   // read thread main
                 else if(!memcmp(s_message->sTrCd, "JH", 2))
                 {
                     printf("\nRECV FROM BANK[SIZE:%d]:%s\n", sizeof(message), message);
-                    printf("\nÇöÀç ÀÜ¾×:%.*s\n", sizeof(s_message->sBlc), s_message->sBlc);
+                    printf("\ní˜„ì¬ ì”ì•¡:%.*s\n", sizeof(s_message->sBlc), s_message->sBlc);
                 }
 
                 else if(!memcmp(s_message->sTrCd, "PS", 2))
                 {
                     printf("\nRECV FROM BANK[SIZE:%d]:%s\n", sizeof(message), message);
-                    printf("\nÀÔ±İÈÄ ÀÜ¾×:%.*s\n", sizeof(s_message->sBlc), s_message->sBlc);
+                    printf("\nì…ê¸ˆí›„ ì”ì•¡:%.*s\n", sizeof(s_message->sBlc), s_message->sBlc);
                 }
 
                 else if(!memcmp(s_message->sTrCd, "GE", 2))
                 {
                     printf("\nRECV FROM BANK[SIZE:%d]:%s\n", sizeof(message), message);
-                    printf("\nÃâ±İÈÄ ÀÜ¾×:%.*s\n", sizeof(s_message->sBlc), s_message->sBlc);
+                    printf("\nì¶œê¸ˆí›„ ì”ì•¡:%.*s\n", sizeof(s_message->sBlc), s_message->sBlc);
                 }
 
                 else if(!memcmp(s_message->sTrCd, "HB", 2))
@@ -434,32 +434,32 @@ void * recv_message(void * arg)   // read thread main
 
 		else if(!memcmp(s_message->sTrCd, "O1", 2))
                 {
-                    printf("\n¸ÕÀú ÀÔÀå ¼±¼ö...\n");
+                    printf("\në¨¼ì € ì…ì¥ ì„ ìˆ˜...\n");
                     turn = 'y';
                 }
 
 		else if(!memcmp(s_message->sTrCd, "O2", 2))
                 {
-                    printf("\n³ªÁß¿¡ ÀÔÀå ÈÄ¼ö...\n");
+                    printf("\në‚˜ì¤‘ì— ì…ì¥ í›„ìˆ˜...\n");
                     turn = 'n';
                 }
 
 		else if(!memcmp(s_message->sTrCd, "O3", 2))
                 {
-                    printf("\n°ÔÀÓ ½ºÅ¸Æ®...\n");
+                    printf("\nê²Œì„ ìŠ¤íƒ€íŠ¸...\n");
                     start = 1;
                 }
 
 		else if(!memcmp(s_message->sTrCd, "OE", 2))
 		{    
 		    start = -1;
-		    printf("\nÇØ´çÅ×ÀÌºí ¾øÀ½\n");
+		    printf("\ní•´ë‹¹í…Œì´ë¸” ì—†ìŒ\n");
 		}
 
 		else if(!memcmp(s_message->sTrCd, "OF", 2))
 		{    
 		    start = -1;
-		    printf("\nÇØ´çÅ×ÀÌºí ¸¸¿øÀÓ\n");
+		    printf("\ní•´ë‹¹í…Œì´ë¸” ë§Œì›ì„\n");
 		}
 
 		else if(!memcmp(s_message->sTrCd, "OS", 2))
@@ -468,7 +468,7 @@ void * recv_message(void * arg)   // read thread main
                     col = atoi(s_message->sCol);
                     board[row][col] = *(s_message->sDol);
 		    mvprintw(row, col*2, "%c", board[row][col]);
-                    mvprintw(BOARD_SIZE+2, 0, "»ó´ë°¡ ³õÀº ÀÚ¸®[row:%d][col:%d] ", row, col);
+                    mvprintw(BOARD_SIZE+2, 0, "ìƒëŒ€ê°€ ë†“ì€ ìë¦¬[row:%d][col:%d] ", row, col);
                     refresh();
 
 		    check = check_win(row, col);
@@ -481,7 +481,7 @@ void * recv_message(void * arg)   // read thread main
 
 		else if(!memcmp(s_message->sTrCd, "OO", 2))
 		{
-		    printf("\n»ó´ë°¡ ³ª°¨\n");
+		    printf("\nìƒëŒ€ê°€ ë‚˜ê°\n");
 		    start = -1;
 		}
 
@@ -507,7 +507,8 @@ void error_handling(char *message)
 /********************************************************************************************************/
 void printInputArray()
 {
-    for (int i =0; i < inputLength; i++)
+    int i;
+    for (i =0; i < inputLength; i++)
     {
         printf("%c", input[i]);
     }
@@ -516,46 +517,47 @@ void printInputArray()
 /********************************************************************************************************/
 
 /********************************************************************************************************/
-// »çÄ¢ ¿¬»êÀÇ °á°ú¸¦ intÇüÀ¸·Î ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÌ´Ù. ÆÄ¶ó¹ÌÅÍ·Î »çÄ¢¿¬»ê ¼ö½Ä°ú, ±× ¼ö½ÄÀÇ ±æÀÌ¸¦ ¹Ş´Â´Ù.
+// ì‚¬ì¹™ ì—°ì‚°ì˜ ê²°ê³¼ë¥¼ intí˜•ìœ¼ë¡œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤. íŒŒë¼ë¯¸í„°ë¡œ ì‚¬ì¹™ì—°ì‚° ìˆ˜ì‹ê³¼, ê·¸ ìˆ˜ì‹ì˜ ê¸¸ì´ë¥¼ ë°›ëŠ”ë‹¤.
 int fundamentalOperation(char localValue[ARRAY_SIZE], int localCount)
 {
-    int  INT[ARRAY_SIZE] = {0};           // ¼ö¸¦ ÀúÀåÇÏ´Â °ø°£
-    int  INTidx = 0;                         // v¹è¿­¿¡ µé¾î°¡´Â °¹¼ö¸¦ °è»êÇÏ±â À§ÇÑ º¯¼ö
-    char SYMBOL[ARRAY_SIZE] = {0};      // ¼ö½Ä±âÈ£¸¦ ÀúÀåÇÏ´Â °ø°£
-    int  SYMBOLidx = 0;                     // con¹è¿­¿¡ µé¾î°¡´Â °¹¼ö¸¦ °è»êÇÏ±â À§ÇÑ º¯¼ö
-    int  INTbuf = 0;                         // ¹®ÀÚ¿­ ¹è¿­·Î ±úÁ®ÀÖ´Â ¼ö¸¦ Á¶ÇÕÇÏ´Â °ø°£(ÀÌÈÄ ÀúÀåÇÏ´Â °ø°£À¸·Î ÀÌµ¿)
-    divmulhandle = 0;       // °öÇÏ±â³ª ³ª´©±â¸¦ °¡Áö°í ÀÖ´ÂÁö È®ÀÎÇÏ±â À§ÇÑ º¯¼ö
-    for (int j = 0; j < localCount; j++)
+    int  INT[ARRAY_SIZE] = {0};           // ìˆ˜ë¥¼ ì €ì¥í•˜ëŠ” ê³µê°„
+    int  INTidx = 0;                         // vë°°ì—´ì— ë“¤ì–´ê°€ëŠ” ê°¯ìˆ˜ë¥¼ ê³„ì‚°í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+    char SYMBOL[ARRAY_SIZE] = {0};      // ìˆ˜ì‹ê¸°í˜¸ë¥¼ ì €ì¥í•˜ëŠ” ê³µê°„
+    int  SYMBOLidx = 0;                     // conë°°ì—´ì— ë“¤ì–´ê°€ëŠ” ê°¯ìˆ˜ë¥¼ ê³„ì‚°í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+    int  INTbuf = 0;                         // ë¬¸ìì—´ ë°°ì—´ë¡œ ê¹¨ì ¸ìˆëŠ” ìˆ˜ë¥¼ ì¡°í•©í•˜ëŠ” ê³µê°„(ì´í›„ ì €ì¥í•˜ëŠ” ê³µê°„ìœ¼ë¡œ ì´ë™)
+    int  i, j, tmp, result;
+    divmulhandle = 0;       // ê³±í•˜ê¸°ë‚˜ ë‚˜ëˆ„ê¸°ë¥¼ ê°€ì§€ê³  ìˆëŠ”ì§€ í™•ì¸í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+    for (j = 0; j < localCount; j++)
     {
-        if ('0' <= localValue[j] && localValue[j] <= '9')       // ¼ıÀÚÀÏ °æ¿ì sqr¿¡ ÀúÀåÇÑ´Ù.
+        if ('0' <= localValue[j] && localValue[j] <= '9')       // ìˆ«ìì¼ ê²½ìš° sqrì— ì €ì¥í•œë‹¤.
         {
-            INTbuf *= 10;                                               // ±âÁ¸¿¡ µé¾îÀÖ´ø sqr °ªÀº 10À» °öÇÏ¿© ÇÑÄ­ ¹Ğ¾îÁÖ°í °ªÀÌ ¾øÀ¸¸é ±×³É0ÀÌ´Ù.
-            INTbuf += localValue[j] - '0';                            // »õ·Î¿î ¼ıÀÚ¸¦ ´õÇØÁØ´Ù. Ä³¸¯ÅÍÇüÀÌ±â ¶§¹®¿¡ '0'À» »©¼­ ¿ø·¡ °ªÀ» ±¸ÇÑ´Ù.
+            INTbuf *= 10;                                               // ê¸°ì¡´ì— ë“¤ì–´ìˆë˜ sqr ê°’ì€ 10ì„ ê³±í•˜ì—¬ í•œì¹¸ ë°€ì–´ì£¼ê³  ê°’ì´ ì—†ìœ¼ë©´ ê·¸ëƒ¥0ì´ë‹¤.
+            INTbuf += localValue[j] - '0';                            // ìƒˆë¡œìš´ ìˆ«ìë¥¼ ë”í•´ì¤€ë‹¤. ìºë¦­í„°í˜•ì´ê¸° ë•Œë¬¸ì— '0'ì„ ë¹¼ì„œ ì›ë˜ ê°’ì„ êµ¬í•œë‹¤.
         }
 
-        else if (localValue[j] == '-' || localValue[j] == '+')   // - + ¿¬»êÀÚÀÏ °æ¿ì
+        else if (localValue[j] == '-' || localValue[j] == '+')   // - + ì—°ì‚°ìì¼ ê²½ìš°
         {
-            INT[INTidx] = INTbuf;      // ±âÁ¸¿¡ ±¸ÇÑ ¼ıÀÚ¸¦ v¹è¿­¿¡ Ãß°¡ÇÏ°í,
-            INTbuf = 0;            // sqrÀ» ÃÊ±âÈ­ÇÑ´Ù.
-            INTidx++;             // ¹è¿­ÀÇ Å©±â¸¦ °è»êÇÏ±â À§ÇÑ vIdx´Â 1À» ´õÇØÁØ´Ù.
+            INT[INTidx] = INTbuf;      // ê¸°ì¡´ì— êµ¬í•œ ìˆ«ìë¥¼ vë°°ì—´ì— ì¶”ê°€í•˜ê³ ,
+            INTbuf = 0;            // sqrì„ ì´ˆê¸°í™”í•œë‹¤.
+            INTidx++;             // ë°°ì—´ì˜ í¬ê¸°ë¥¼ ê³„ì‚°í•˜ê¸° ìœ„í•œ vIdxëŠ” 1ì„ ë”í•´ì¤€ë‹¤.
 
             if (divmulhandle == 1)
-            { // °öÇÏ±â³ª ³ª´©±â¸¦ °¡Áö°í ÀÖÀ½À» È®ÀÎÇÑ »óÅÂ¶ó¸é
-                int tmp = 0;
+            { // ê³±í•˜ê¸°ë‚˜ ë‚˜ëˆ„ê¸°ë¥¼ ê°€ì§€ê³  ìˆìŒì„ í™•ì¸í•œ ìƒíƒœë¼ë©´
+                tmp = 0;
                 if (SYMBOL[SYMBOLidx-1] == '*')
                 {
-                    printf("°ö¼À °è»ê");
+                    printf("ê³±ì…ˆ ê³„ì‚°");
                     tmp = INT[INTidx-2] * INT[INTidx-1];
                 }
 
                 else if (SYMBOL[SYMBOLidx-1] == '/')
                 {
-                    printf("³ª´°¼À °è»ê");
+                    printf("ë‚˜ëˆ—ì…ˆ ê³„ì‚°");
                     tmp = INT[INTidx-2] / INT[INTidx-1];
                 }
                 printf(" %d\n", tmp);
                 divmulhandle = 0;
-                // °è»êÇÑ °ªµéÀ» ¹è¿­¿¡¼­ Á¦¿ÜÇØÁØ´Ù.
+                // ê³„ì‚°í•œ ê°’ë“¤ì„ ë°°ì—´ì—ì„œ ì œì™¸í•´ì¤€ë‹¤.
                 SYMBOL[SYMBOLidx-1] = 0;
                 SYMBOLidx--;
 
@@ -567,28 +569,28 @@ int fundamentalOperation(char localValue[ARRAY_SIZE], int localCount)
                 INTidx ++;
             }
 
-            SYMBOL[SYMBOLidx] = localValue[j]; // ¼ö½Äµµ ¹è¿­¿¡ Ãß°¡ÇÑ´Ù.
+            SYMBOL[SYMBOLidx] = localValue[j]; // ìˆ˜ì‹ë„ ë°°ì—´ì— ì¶”ê°€í•œë‹¤.
             printf("con[%d] : %c\n", SYMBOLidx, SYMBOL[SYMBOLidx]);
             SYMBOLidx++;
 
         }
         else if (localValue[j] == '*' || localValue[j] == '/')
-        { // * / ¿¬»êÀÚÀÏ °æ¿ì,
-            INT[INTidx] = INTbuf;      // ±âÁ¸¿¡ ±¸ÇÑ ¼ıÀÚ¸¦ v¹è¿­¿¡ Ãß°¡ÇÏ°í,
-            INTbuf = 0;            // sqrÀ» ÃÊ±âÈ­ÇÑ´Ù.
-            INTidx++;             // ¹è¿­ÀÇ Å©±â¸¦ °è»êÇÏ±â À§ÇÑ vIdx´Â 1À» ´õÇØÁØ´Ù.
+        { // * / ì—°ì‚°ìì¼ ê²½ìš°,
+            INT[INTidx] = INTbuf;      // ê¸°ì¡´ì— êµ¬í•œ ìˆ«ìë¥¼ vë°°ì—´ì— ì¶”ê°€í•˜ê³ ,
+            INTbuf = 0;            // sqrì„ ì´ˆê¸°í™”í•œë‹¤.
+            INTidx++;             // ë°°ì—´ì˜ í¬ê¸°ë¥¼ ê³„ì‚°í•˜ê¸° ìœ„í•œ vIdxëŠ” 1ì„ ë”í•´ì¤€ë‹¤.
 
             if (divmulhandle == 1)
-            { // ±âÁ¸¿¡ °ö¼ÀÀÌ³ª ³ª´°¼À ¼ö½ÄÀ» ¹Ş¾ÆµĞ°Ô ÀÖ´Ù¸é
-                int tmp = 0;
+            { // ê¸°ì¡´ì— ê³±ì…ˆì´ë‚˜ ë‚˜ëˆ—ì…ˆ ìˆ˜ì‹ì„ ë°›ì•„ë‘”ê²Œ ìˆë‹¤ë©´
+                tmp = 0;
                 if (SYMBOL[SYMBOLidx-1] == '*')
                 {
-                    printf("°ö¼À °è»ê");
+                    printf("ê³±ì…ˆ ê³„ì‚°");
                     tmp = INT[INTidx-2] * INT[INTidx-1];
                 }
                 else if (SYMBOL[SYMBOLidx-1] == '/')
                 {
-                    printf("³ª´°¼À °è»ê");
+                    printf("ë‚˜ëˆ—ì…ˆ ê³„ì‚°");
                     tmp = SYMBOL[SYMBOLidx-2] / SYMBOL[SYMBOLidx-1];
                 }
                 printf(" %d\n", tmp);
@@ -603,34 +605,34 @@ int fundamentalOperation(char localValue[ARRAY_SIZE], int localCount)
                 INTidx ++;
             }
 
-            SYMBOL[SYMBOLidx] = localValue[j]; // ¼ö½Äµµ ¹è¿­¿¡ Ãß°¡ÇÑ´Ù.
+            SYMBOL[SYMBOLidx] = localValue[j]; // ìˆ˜ì‹ë„ ë°°ì—´ì— ì¶”ê°€í•œë‹¤.
             SYMBOLidx++;
 
-            divmulhandle = 1; // °öÇÏ±â³ª ³ª´©±â¸¦ ÀÔ·Â¹Ş¾ÒÀ½À» Ç¥ÇöÇØµĞ´Ù.
+            divmulhandle = 1; // ê³±í•˜ê¸°ë‚˜ ë‚˜ëˆ„ê¸°ë¥¼ ì…ë ¥ë°›ì•˜ìŒì„ í‘œí˜„í•´ë‘”ë‹¤.
         }
 
         if (j == localCount-1)
-        { // ¼ö½ÄÀ» ´Ù ÀÔ·Â¹ŞÀº »óÅÂ·Î, °öÇÏ±â³ª ³ª´©±â¸¦ ÀÔ·Â ¹ŞÀº »óÅÂ¶ó¸é
-            INT[INTidx] = INTbuf;      // ±âÁ¸¿¡ ±¸ÇÑ ¼ıÀÚ¸¦ v¹è¿­¿¡ Ãß°¡ÇÏ°í,
-            INTbuf = 0;            // sqrÀ» ÃÊ±âÈ­ÇÑ´Ù.
-            INTidx++;             // ¹è¿­ÀÇ Å©±â¸¦ °è»êÇÏ±â À§ÇÑ vIdx´Â 1À» ´õÇØÁØ´Ù.
+        { // ìˆ˜ì‹ì„ ë‹¤ ì…ë ¥ë°›ì€ ìƒíƒœë¡œ, ê³±í•˜ê¸°ë‚˜ ë‚˜ëˆ„ê¸°ë¥¼ ì…ë ¥ ë°›ì€ ìƒíƒœë¼ë©´
+            INT[INTidx] = INTbuf;      // ê¸°ì¡´ì— êµ¬í•œ ìˆ«ìë¥¼ vë°°ì—´ì— ì¶”ê°€í•˜ê³ ,
+            INTbuf = 0;            // sqrì„ ì´ˆê¸°í™”í•œë‹¤.
+            INTidx++;             // ë°°ì—´ì˜ í¬ê¸°ë¥¼ ê³„ì‚°í•˜ê¸° ìœ„í•œ vIdxëŠ” 1ì„ ë”í•´ì¤€ë‹¤.
 
             if (divmulhandle == 1)
             {
-                int tmp = 0;
+                tmp = 0;
                 if (SYMBOL[SYMBOLidx-1] == '*')
                 {
-                    printf("°ö¼À °è»ê");
+                    printf("ê³±ì…ˆ ê³„ì‚°");
                     tmp = INT[INTidx-2] * INT[INTidx-1];
                 }
                 else if (SYMBOL[SYMBOLidx-1] == '/')
                 {
-                    printf("³ª´°¼À °è»ê %d, %d", INT[INTidx-2], INT[INTidx-1]);
+                    printf("ë‚˜ëˆ—ì…ˆ ê³„ì‚° %d, %d", INT[INTidx-2], INT[INTidx-1]);
                     tmp = INT[INTidx-2] / INT[INTidx-1];
                 }
                 printf(" %d\n", tmp);
                 divmulhandle = 0;
-                // °è»êÇÑ °ªµéÀ» ¹è¿­¿¡¼­ Á¦¿ÜÇØÁØ´Ù.
+                // ê³„ì‚°í•œ ê°’ë“¤ì„ ë°°ì—´ì—ì„œ ì œì™¸í•´ì¤€ë‹¤.
                 SYMBOL[SYMBOLidx-1] = 0;
                 SYMBOLidx--;
 
@@ -644,8 +646,8 @@ int fundamentalOperation(char localValue[ARRAY_SIZE], int localCount)
         }
     }
 
-    int result = INT[0];
-    for (int i =0; i < SYMBOLidx; i++)
+    result = INT[0];
+    for (i =0; i < SYMBOLidx; i++)
     {
         if (SYMBOL[i] == '+')
         {
@@ -662,16 +664,16 @@ int fundamentalOperation(char localValue[ARRAY_SIZE], int localCount)
 /********************************************************************************************************/
 
 /********************************************************************************************************/
-// Àü¿ªº¯¼ö input¿¡ ÀÖ´Â ¼ö½ÄÀÇ °¡Àå ¸ÕÀú ¸¸³ª°í °¡Àå ±íÀº °ıÈ£ ÇÏ³ª¸¦ Ç®¾î³»°í,
-// input¿¡ ¼ö½ÄÀ» ÀçÁ¤¸®ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+// ì „ì—­ë³€ìˆ˜ inputì— ìˆëŠ” ìˆ˜ì‹ì˜ ê°€ì¥ ë¨¼ì € ë§Œë‚˜ê³  ê°€ì¥ ê¹Šì€ ê´„í˜¸ í•˜ë‚˜ë¥¼ í’€ì–´ë‚´ê³ ,
+// inputì— ìˆ˜ì‹ì„ ì¬ì •ë¦¬í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
 void bracketOperation()
 {
-    // °¡Àå ±íÀº °ıÈ£¹®¿¡ ÀÖ´Â ¼ö½ÄÀ» Ã£´Â´Ù.
-    // °ıÈ£°¡ ¿­¸± ¶§ ¸¶´Ù +1, ´İÈú ¶§ ¸¶´Ù -1
-    // ´õ ÀÌ»ó ³»ºÎ¿¡ °ıÈ£°¡ ¾øÀ» ¶§(´İ´Â °ıÈ£¸¦ ¸¸³¯ ¶§) °è»ê ½ÃÀÛ
-    // 1¼øÀ§ -> °ıÈ£ ³»ºÎ¿¡ ÀÖ´Â ¼ö½Ä
-    // 2¼øÀ§ -> °ö¼À/³ª´°¼À
-    // 3¼øÀ§ -> µ¡¼À/»¬¼À
+    // ê°€ì¥ ê¹Šì€ ê´„í˜¸ë¬¸ì— ìˆëŠ” ìˆ˜ì‹ì„ ì°¾ëŠ”ë‹¤.
+    // ê´„í˜¸ê°€ ì—´ë¦´ ë•Œ ë§ˆë‹¤ +1, ë‹«í ë•Œ ë§ˆë‹¤ -1
+    // ë” ì´ìƒ ë‚´ë¶€ì— ê´„í˜¸ê°€ ì—†ì„ ë•Œ(ë‹«ëŠ” ê´„í˜¸ë¥¼ ë§Œë‚  ë•Œ) ê³„ì‚° ì‹œì‘
+    // 1ìˆœìœ„ -> ê´„í˜¸ ë‚´ë¶€ì— ìˆëŠ” ìˆ˜ì‹
+    // 2ìˆœìœ„ -> ê³±ì…ˆ/ë‚˜ëˆ—ì…ˆ
+    // 3ìˆœìœ„ -> ë§ì…ˆ/ëº„ì…ˆ
     int newForm[ARRAY_SIZE] = {0};
     int newFormIdx = 0;
     char localValue[ARRAY_SIZE] = {0};
@@ -679,7 +681,8 @@ void bracketOperation()
     int localStart = 0;
     int localEnd = 0;
     int localResult = 0;
-    for (int i = 0; i < inputLength; i++)
+    int i, j, k;
+    for (i = 0; i < inputLength; i++)
     {
         if (input[i] == '(')
         {
@@ -695,7 +698,7 @@ void bracketOperation()
             localResult = fundamentalOperation(localValue, localCount);
             printf("cal : %d\n", localResult);
             localEnd = i;
-            for (int j = 0; j < ARRAY_SIZE; j++)
+            for (j = 0; j < ARRAY_SIZE; j++)
             {
                 if (j < localStart)
                 {
@@ -706,7 +709,7 @@ void bracketOperation()
                 {
                     char localResultArr[11] = {0};
                     sprintf(localResultArr, "%d", localResult);
-                    for (int k = 0; k < 11; k++)
+                    for (k = 0; k < 11; k++)
                     {
                         if (localResultArr[k] != 0)
                         {
@@ -731,13 +734,13 @@ void bracketOperation()
         {
             localValue[localCount] = input[i];
             localCount++;
-            // ¼ıÀÚ È¤Àº ¼ö½Ä
+            // ìˆ«ì í˜¹ì€ ìˆ˜ì‹
         }
     }
     memset(&input[0], 0, sizeof(input));
     inputLength = 0;
 
-    for (int i = 0; i < ARRAY_SIZE; i++)
+    for (i = 0; i < ARRAY_SIZE; i++)
     {
         if (newForm[i] == 0)
         {
@@ -755,22 +758,23 @@ void bracketOperation()
 /********************************************************************************************************/
 void cal()
 {
+    int i, result;
     while(1)
     {
-        printf("¼ö½ÄÀ» ÀÔ·ÂÇÏ¼¼¿ä. Á¾·á¸¦ ¿øÇÏ½Ã¸é q¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
-        printf("ÀÔ·Â : ");
+        printf("ìˆ˜ì‹ì„ ì…ë ¥í•˜ì„¸ìš”. ì¢…ë£Œë¥¼ ì›í•˜ì‹œë©´ që¥¼ ì…ë ¥í•˜ì„¸ìš”.\n");
+        printf("ì…ë ¥ : ");
         scanf("%s", input);
         if (input[0] == 'q' || input[0] == 'Q')
         {
-            // q¶ó´Â °ªÀ» ÀÔ·Â¹Ş¾Ò´ÂÁö È®ÀÎÇÏ°í, ÀÔ·Â¹Ş¾ÒÀ¸¸é while¹®À» ¹ş¾î³­´Ù.
+            // që¼ëŠ” ê°’ì„ ì…ë ¥ë°›ì•˜ëŠ”ì§€ í™•ì¸í•˜ê³ , ì…ë ¥ë°›ì•˜ìœ¼ë©´ whileë¬¸ì„ ë²—ì–´ë‚œë‹¤.
             break;
         }
 
         else
         {
-            // ÀÔ·ÂÇÑ ¼ö½ÄÀÇ ±æÀÌ¸¦ ¾Ë¾Æ³½´Ù.
-            // strlenÀ» »ç¿ëÇÏ¿© ±æÀÌ¸¦ ±¸ÇØµµ µÇÁö¸¸ »ç¿ëÀÚ°¡space¸¦ ÀÔ·ÂÇÒ¼öµµ ÀÖ±â ¶§¹®¿¡ for¹®À¸·Î Ã¼Å©ÇÔ
-            for (int i = 0; i < ARRAY_SIZE; i++)
+            // ì…ë ¥í•œ ìˆ˜ì‹ì˜ ê¸¸ì´ë¥¼ ì•Œì•„ë‚¸ë‹¤.
+            // strlenì„ ì‚¬ìš©í•˜ì—¬ ê¸¸ì´ë¥¼ êµ¬í•´ë„ ë˜ì§€ë§Œ ì‚¬ìš©ìê°€spaceë¥¼ ì…ë ¥í• ìˆ˜ë„ ìˆê¸° ë•Œë¬¸ì— forë¬¸ìœ¼ë¡œ ì²´í¬í•¨
+            for (i = 0; i < ARRAY_SIZE; i++)
             {
                 if (input[i] == 0x00)
                 {
@@ -779,12 +783,12 @@ void cal()
                 }
             }
 
-            // ¼ö½ÄÀ» ÇÑ ¹ø Ãâ·ÂÇÏ°í,
+            // ìˆ˜ì‹ì„ í•œ ë²ˆ ì¶œë ¥í•˜ê³ ,
             printInputArray();
-            // ¹è¿­ ÀÔ·Â °ª °Ë»ç.
-            // 0~9¿Í *-+/()¸¸ ÀÔ·Â °¡´ÉÇÏµµ·Ï ÇÊÅÍ¸µÇÑ´Ù.
+            // ë°°ì—´ ì…ë ¥ ê°’ ê²€ì‚¬.
+            // 0~9ì™€ *-+/()ë§Œ ì…ë ¥ ê°€ëŠ¥í•˜ë„ë¡ í•„í„°ë§í•œë‹¤.
             handle = 0;
-            for (int i = 0; i < inputLength; i++)
+            for (i = 0; i < inputLength; i++)
             {
                 if ((
                     (input[i] >= '0') ||
@@ -801,63 +805,64 @@ void cal()
                 }
                 else
                 {
-                    // ¼ıÀÚ¿Í °ıÈ£, ±×¸®°í »çÄ¢¿¬»ê ÀÌ¿ÜÀÇ °ªÀ» ÀÔ·Â¹ŞÀ¸¸é -1·Î º¯È¯
+                    // ìˆ«ìì™€ ê´„í˜¸, ê·¸ë¦¬ê³  ì‚¬ì¹™ì—°ì‚° ì´ì™¸ì˜ ê°’ì„ ì…ë ¥ë°›ìœ¼ë©´ -1ë¡œ ë³€í™˜
                     handle = -1;
                 }
             }
 
-            // -1ÀÏ °æ¿ì(¾û¶×ÇÑ °ªÀ» ÀÔ·Â¹Ş¾ÒÀ» °æ¿ì)
+            // -1ì¼ ê²½ìš°(ì—‰ëš±í•œ ê°’ì„ ì…ë ¥ë°›ì•˜ì„ ê²½ìš°)
             if (handle == -1)
             {
-                printf("Àß¸øµÈ ÀÔ·Â °ªÀÌ ÀÖ½À´Ï´Ù.\n"); // ¸Ş½ÃÁö Ãâ·Â
+                printf("ì˜ëª»ëœ ì…ë ¥ ê°’ì´ ìˆìŠµë‹ˆë‹¤.\n"); // ë©”ì‹œì§€ ì¶œë ¥
             }
             else
             {
-                // °ıÈ£¸¦ ´Ù Ç®¾î³¾ ¶§ ±îÁö ¹«ÇÑ¹İº¹ÇÑ´Ù.
+                // ê´„í˜¸ë¥¼ ë‹¤ í’€ì–´ë‚¼ ë•Œ ê¹Œì§€ ë¬´í•œë°˜ë³µí•œë‹¤.
                 while (1)
                 {
                     guarhandle = 0;
-                    for (int i = 0; i < inputLength; i++)
+                    for (i = 0; i < inputLength; i++)
                     {
-                        // °ıÈ£¸¦ °¡Áö°í ÀÖ´ÂÁö È®ÀÎÇÏ°í,
+                        // ê´„í˜¸ë¥¼ ê°€ì§€ê³  ìˆëŠ”ì§€ í™•ì¸í•˜ê³ ,
                         if (input[i] == '(')
                         {
-                            // ÀÖÀ¸¸é 1·Î º¯°æ
+                            // ìˆìœ¼ë©´ 1ë¡œ ë³€ê²½
                             guarhandle = 1;
                             break;
                         }
                     }
-                    if (guarhandle == 1)// 1ÀÏ °æ¿ì(°ıÈ£¸¦ °¡Áö°í ÀÖÀ» °æ¿ì)
+                    if (guarhandle == 1)// 1ì¼ ê²½ìš°(ê´„í˜¸ë¥¼ ê°€ì§€ê³  ìˆì„ ê²½ìš°)
                     {
-                        bracketOperation(); // °ıÈ£ ÇÏ³ª¸¦ Ç®¾î³»°í
-                        printInputArray(); // °á°ú¸¦ Ãâ·Â
+                        bracketOperation(); // ê´„í˜¸ í•˜ë‚˜ë¥¼ í’€ì–´ë‚´ê³ 
+                        printInputArray(); // ê²°ê³¼ë¥¼ ì¶œë ¥
                     }
                     else
-                    { // °ıÈ£°¡ ¾øÀ» °æ¿ì, ¹İº¹¹®À» ¹ş¾î³­´Ù.
+                    { // ê´„í˜¸ê°€ ì—†ì„ ê²½ìš°, ë°˜ë³µë¬¸ì„ ë²—ì–´ë‚œë‹¤.
                         break;
                     }
                 }
-                // ±âÅ¸ ÀÜ¿© »çÄ¢¿¬»êÀ» ¼öÇàÇÑ´Ù.
-                int result = fundamentalOperation(input, inputLength);
-                printf("°á°ú´Â %dÀÔ´Ï´Ù.\n", result); // °á°ú Ãâ·Â
+                // ê¸°íƒ€ ì”ì—¬ ì‚¬ì¹™ì—°ì‚°ì„ ìˆ˜í–‰í•œë‹¤.
+                result = fundamentalOperation(input, inputLength);
+                printf("ê²°ê³¼ëŠ” %dì…ë‹ˆë‹¤.\n", result); // ê²°ê³¼ ì¶œë ¥
             }
         }
-        // ¹è¿­ÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ 0À¸·Î ÃÊ±âÈ­
+        // ë°°ì—´ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
         memset(&input[0], 0, sizeof(input));
         inputLength = 0;
     }
-    printf("Á¾·áÇÕ´Ï´Ù.\n");
+    printf("ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
     return ;
 }
 /********************************************************************************************************/
 
 /********************************************************************************************************/
-//º¸µå ÃÊ±âÈ­
+//ë³´ë“œ ì´ˆê¸°í™”
 void init_board()
 {
-    for (int i = 0; i < BOARD_SIZE; i++)
+    int i, j;
+    for (i = 0; i < BOARD_SIZE; i++)
     {
-        for (int j = 0; j < BOARD_SIZE; j++)
+        for (j = 0; j < BOARD_SIZE; j++)
         {
             board[i][j] = '_';
         }
@@ -866,14 +871,14 @@ void init_board()
 /********************************************************************************************************/
 
 /********************************************************************************************************/
-//½ÂºÎÃ¼Å©
+//ìŠ¹ë¶€ì²´í¬
 int check_win(int row, int col)
 {
     char check_win_dol = board[row][col];
     int i, j;
     int count = 0;
 
-    //°¡·Î ¹æÇâÀ¸·Î
+    //ê°€ë¡œ ë°©í–¥ìœ¼ë¡œ
     for (j = 0; j < BOARD_SIZE; j++)
     {
 
@@ -891,7 +896,7 @@ int check_win(int row, int col)
         }
     }
 
-    // ¼¼·Î ¹æÇâÀ¸·Î
+    // ì„¸ë¡œ ë°©í–¥ìœ¼ë¡œ
     count = 0;
     for (i = 0; i < BOARD_SIZE; i++)
     {
@@ -909,7 +914,7 @@ int check_win(int row, int col)
         }
     }
 
-    // ¿ŞÂÊÀ¸·Î ÈÖ¾îÁø ¹æÇâÀ¸·Î(\)
+    // ì™¼ìª½ìœ¼ë¡œ íœ˜ì–´ì§„ ë°©í–¥ìœ¼ë¡œ(\)
     count = 0;
     i = row, j = col;
     while (i > 0 && j > 0)
@@ -935,7 +940,7 @@ int check_win(int row, int col)
         j++;
     }
 
-    // ¿À¸¥ÂÊÀ¸·Î ÈÖ¾îÁø ¹æÇâÀ¸·Î(/)
+    // ì˜¤ë¥¸ìª½ìœ¼ë¡œ íœ˜ì–´ì§„ ë°©í–¥ìœ¼ë¡œ(/)
     count = 0;
     i = row;
     j = col;
@@ -962,7 +967,7 @@ int check_win(int row, int col)
         j--;
     }
 
-    return -1; // 5µ¹ ¿¬¼Ó ¾Æ´Ò°æ¿ì
+    return -1; // 5ëŒ ì—°ì† ì•„ë‹ê²½ìš°
 }
 /********************************************************************************************************/
 
@@ -971,27 +976,27 @@ void print_sigint(int  signo)
 {
     if (signo == SIGINT)
     {
-        printf( "ctrl + c Å½ÁöµÊ\n");
+        printf( "ctrl + c íƒì§€ë¨\n");
     }
     else if (signo == SIGSTOP)
     {
-        printf( "¿ÜÁÖ¿¡¼­ ÁßÁöµÊ\n");
+        printf( "ì™¸ì£¼ì—ì„œ ì¤‘ì§€ë¨\n");
     }
     else if (signo == SIGTSTP)
     {
-        printf( "ctrl + z Å½ÁöµÊ\n");
+        printf( "ctrl + z íƒì§€ë¨\n");
     }
     else if (signo == SIGSEGV)
     {
-        printf( "¸Ş¸ğ¸® ÁÖ¼Ò ÂüÁ¶ ½ÇÆĞ\n");
+        printf( "ë©”ëª¨ë¦¬ ì£¼ì†Œ ì°¸ì¡° ì‹¤íŒ¨\n");
     }
     else if (signo == SIGBUS)
     {
-        printf( "¸Ş¸ğ¸® Á¢±Ù ¿¡·¯\n");
+        printf( "ë©”ëª¨ë¦¬ ì ‘ê·¼ ì—ëŸ¬\n");
     }
     else if (signo == SIGTERM)
     {
-        printf( "ÇÁ·Î¼¼½º Á¾·á\n");
+        printf( "í”„ë¡œì„¸ìŠ¤ ì¢…ë£Œ\n");
     }
     else if (signo == SIGPIPE)
     {
@@ -1092,7 +1097,7 @@ int get_move(char player, int * prow, int * pcol)
                 refresh();
             }
         }
-        else if (ch == '\n' && board[row][col] == '_' && row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE) // À§Ä¡ À¯È¿¼º
+        else if (ch == '\n' && board[row][col] == '_' && row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE) // ìœ„ì¹˜ ìœ íš¨ì„±
         {
             board[row][col] = player;
             mvprintw(row, col*2, "%c", player);
