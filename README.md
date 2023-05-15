@@ -5,6 +5,7 @@ client.cfg에 계좌번호, 비번, 잔고정보를 저장후 정보가 없데�
 오목게임은 테이블 최대10개 해당 테이블에 먼저입장한 사람이 선수 
  
 컴파일후 테스트 해보시고 추가하고 싶은 기능이 있으면 추천해 주세요\
-gcc -lpthread -o client bankcli_omok_cal.c\
+gcc -lpthread -o client bankcli_omok_cal.c //좌표로 오목게임 \
 gcc -lpthread -o server bankser_omok.c //파일로 관리하는 서버\
-gcc -lpthread -lsqlite3 -o server bankser_omok.c //DB로 관리하는 서버 (sqlite3 설치필요함)
+gcc -lpthread -lsqlite3 -o server bankser_omok_sql.c //DB로 관리하는 서버 (sqlite3 설치필요함)\
+gcc -lpthread -lncurses -o client bankcli_omok_cal_curses.c//방향키로 오목게임 (ncurses 설치필요함)\
